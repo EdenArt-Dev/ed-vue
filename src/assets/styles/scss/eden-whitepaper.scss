@@ -1,23 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap%27');
 $clr-primary-black: #3B454E;
 $clr-secondary-black: #5C6975;
-
 $clr-primary-grey: #8899A8;
 $clr-secondary-grey: #D3DCE4;
-
 $clr-primary-white: #ECEFF1;
 $clr-secondary-white: #F5F7F9;
 $clr-fff-white: #FFFFFF;
-
 $clr-primary-blue: #3884FF;
-
 $font-size: 16px;
-$font-family: 'Poppins', sans-serif;
-$font-family-thai: 'Noto Sans Thai', sans-serif;
-
+$font-family: 'Poppins',
+sans-serif;
+$font-family-thai: 'Noto Sans Thai',
+sans-serif;
 $fw-600: 600;
 $fw-400: 400;
 $fw-300: 300;
-
 $font-semi-bold: $fw-600;
 $font-regular: $fw-400;
 $font-light: $fw-300;

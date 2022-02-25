@@ -1,14 +1,16 @@
 <template>
-  <div>
-    
+  <div class="">
+    <label class="font-head">Headyhjngrfjnhgjytkjhjhhh</label> <br>
+    <label class="font-body">Bodyjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjtgyhjgntrhynhgyjyhkjmfgfdtftrytyt</label>
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
-  components: {
-    
-  },
+  components: {},
 }
 </script>
+
+<style lang="scss" scoped>
+</style>
