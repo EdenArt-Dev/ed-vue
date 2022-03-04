@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import './index.css'
 
+// bootstrap icons
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
 Vue.config.productionTip = false
 
 new Vue({

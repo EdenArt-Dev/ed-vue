@@ -1,7 +1,13 @@
 <template>
-  <div class="tw-w-3/4 sm:tw-w-300px tw-h-screen tw-overflow-y-auto tw-bg-secondary-white shadow-right">
+  <div
+    class="tw-w-3/4 sm:tw-w-300px tw-h-screen tw-overflow-y-auto tw-bg-secondary-white shadow-right"
+  >
     <div
-      class="tw-flex tw-justify-center tw-items-center tw-pt-16px tw-mb-16px tw-font-semibold tw-text-head-mobile sm:tw-text-head-web"
+      :class="[
+        'tw-flex tw-justify-center tw-items-center',
+        'tw-pt-16px tw-mb-16px',
+        'tw-font-semibold tw-text-20px sm:tw-text-24px',
+      ]"
     >
       <img :src="logo" class="tw-w-36px tw-h-36px" />
       <label class="tw-ml-16px tw-text-primary-black">EDEN</label
@@ -9,24 +15,85 @@
     </div>
 
     <div v-for="(menu, indexOfMenu) in menus" :key="indexOfMenu">
-      <div class="tw-font-body-mobile sm:font-body-web">
+      <div class="tw-text-12px sm:tw-text-16px tw-pb-12px">
         <div
-          class="tw-h-46px tw-border tw-flex tw-items-center tw-bg-fff-white"
+          :class="[
+            ' tw-flex tw-items-center tw-justify-between tw-w-full tw-h-46px',
+            {
+              'tw-bg-fff-white tw-border': currentMenu.includes(menu.path),
+            },
+          ]"
         >
-          <div class="tw-w-6px tw-h-46px tw-bg-primary-brown"></div>
-          <label class="tw-text-primary-black tw-ml-24px">{{
-            menu.title
-          }}</label>
+          <div class="tw-flex tw-items-center">
+            <div
+              v-if="currentMenu.includes(menu.path)"
+              class="tw-w-6px tw-h-46px tw-bg-primary-brown"
+            ></div>
+
+            <label
+              :class="[
+                {
+                  'tw-ml-18px tw-text-primary-brown tw-font-semibold':
+                    currentMenu.includes(menu.path),
+                  'tw-ml-24px tw-text-primary-black': !currentMenu.includes(
+                    menu.path
+                  ),
+                },
+              ]"
+              >{{ menu.title }}</label
+            >
+          </div>
+
+          <div
+            v-if="menu.subMenu.length"
+            :class="[
+              'tw-mr-24px bi ',
+              {
+                'bi-chevron-down': currentMenu.includes(menu.path),
+                'bi-chevron-up': !currentMenu.includes(menu.path),
+              },
+              {
+                'tw-text-primary-brown': currentMenu === menu.path,
+                'tw-text-primary-black': currentMenu !== menu.path,
+              },
+            ]"
+          ></div>
         </div>
 
-        <div class="shadow-top">
+        <div
+          :class="{ 'tw-bg-fff-white shadow-top': currentMenu === menu.path }"
+        >
           <div
             v-for="(subMenu, indexOfSubMenu) in menu.subMenu"
             :key="indexOfSubMenu"
           >
-            <label class="tw-text-secondary-black tw-ml-36px">{{
-              subMenu.title
-            }}</label>
+            <div class="tw-pt-12px tw-flex tw-justify-between">
+              <label
+                :class="[
+                  'tw-ml-36px',
+                  {
+                    'tw-text-secondary-brown': currentMenu === subMenu.path,
+                    'tw-text-secondary-black': currentMenu !== subMenu.path,
+                  },
+                  { 'tw-font-semibold': currentMenu.includes(subMenu.path) },
+                ]"
+              >
+                {{ subMenu.title }}</label
+              >
+              <div
+                v-if="subMenu.childSubMenu.length"
+                :class="[
+                  'tw-mr-24px bi tw-cursor-pointer',
+                  {
+                    'bi-chevron-down tw-text-primary-brown':
+                      currentMenu.includes(subMenu.path),
+                    'bi-chevron-up tw-text-primary-black':
+                      !currentMenu.includes(subMenu.path),
+                  },
+                ]"
+                @click="currentMenu = subMenu.path"
+              ></div>
+            </div>
 
             <div class="tw-flex">
               <div
@@ -41,7 +108,20 @@
                   ) in subMenu.childSubMenu"
                   :key="indexOfChildSubMenu"
                 >
-                  <label class="tw-ml-16px">{{ childSubMenu.title }}</label>
+                  <label
+                    :class="[
+                      'tw-ml-16px',
+                      {
+                        'tw-text-secondary-brown tw-font-medium':
+                          currentMenu === childSubMenu.path,
+                      },
+                      {
+                        'tw-text-secondary-black':
+                          currentMenu !== childSubMenu.path,
+                      },
+                    ]"
+                    >{{ childSubMenu.title }}</label
+                  >
                 </div>
               </div>
             </div>
@@ -55,9 +135,11 @@
 <script>
 export default {
   name: "BaseSidebar",
+  props: {},
   data() {
     return {
       logo: require("../../../assets/svgs/eden-logo-v01.svg"),
+      currentMenu: "/holy-weapons/asset-sale-phases/phase-1",
       menus: [
         {
           title: "Introduction",

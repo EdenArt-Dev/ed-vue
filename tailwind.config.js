@@ -5,13 +5,11 @@ module.exports = {
     theme: {
         extend: {
             fontSize: {
-                'head-web': '24px',
-                'body-web': '16px',
-                'small-web': '12px',
-
-                'head-mobile': '20px',
-                'body-mobile': '12px',
-                'small-mobile': '8px',
+                '8px': '8px',
+                '12px': '12px',
+                '16px': '16px',
+                '20px': '20px',
+                '24px': '24px',
             },
             colors: {
                 'primary-black': '#3B454E',
@@ -31,7 +29,10 @@ module.exports = {
             },
 
             spacing: {
+                '6px': '6px',
+                '12px': '12px',
                 '16px': '16px',
+                '18px': '18px',
                 '24px': '24px',
                 '36px': '36px',
                 '60px': '60px',
