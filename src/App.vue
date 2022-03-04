@@ -58,4 +58,26 @@ export default {
 // Extra large devices (large desktops, 1200px and up)
 @media screen and (min-width: 1200px) {
 }
+
+// width
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+// Track
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #cbd2d9;
+  border-radius: 10px;
+}
+
+// Handle
+::-webkit-scrollbar-thumb {
+  background: #cbd2d9;
+  border-radius: 10px;
+}
+
+// Handle on hover
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd2d9;
+}
 </style>

@@ -18,3 +18,10 @@ $fw-300: 300;
 $font-semi-bold: $fw-600;
 $font-regular: $fw-400;
 $font-light: $fw-300;
+.shadow-top {
+    box-shadow: inset 0px 5px 10px -7px rgba(0, 0, 0, 0.25);
+}
+
+.shadow-right {
+    box-shadow: 1px 0px 0px #E5E5E5;
+}

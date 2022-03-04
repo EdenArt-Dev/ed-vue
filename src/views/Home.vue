@@ -1,14 +1,14 @@
 <template>
   <div class="">
-    <label class="font-head">Headyhjngrfjnhgjytkjhjhhh</label> <br>
-    <label class="font-body">Bodyjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjtgyhjgntrhynhgyjyhkjmfgfdtftrytyt</label>
+    <base-sidebar></base-sidebar>
   </div>
 </template>
 
 <script>
+import BaseSidebar from '../components/whitepaper/base/BaseSidebar.vue'
 export default {
   name: "Home",
-  components: {},
+  components: {BaseSidebar},
 }
 </script>
 
