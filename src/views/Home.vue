@@ -1,16 +1,13 @@
 <template>
-  <div class="">
-    <base-sidebar></base-sidebar>
-  </div>
+  <base-navbar></base-navbar>
 </template>
 
 <script>
-import BaseSidebar from '../components/whitepaper/base/BaseSidebar.vue'
+import BaseNavbar from "../components/homepage/base/BaseNavbar.vue"
 export default {
   name: "Home",
-  components: {BaseSidebar},
+  components: { BaseNavbar },
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

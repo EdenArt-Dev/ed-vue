@@ -23,7 +23,7 @@
     <div class="navbar__logo--sm">
       <span class="m-font-family-passero-one">EDENVERDEN</span>
     </div>
-    
+    <div class="bi bi-list navbar__menu--toggle--sm"></div>
   </div>
 </div>
 </template>
@@ -45,6 +45,14 @@ export default {
 }
 .navbar__logo--sm {
   font-size: 32px;
+}
+.navbar__menu--toggle--sm {
+  position: absolute;
+  left: 20px;
+  top: 8px;
+}
+.bi-list {
+  font-size: 24px;
 }
 .navbar__container--md {
   display: none;
