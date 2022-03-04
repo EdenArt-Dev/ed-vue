@@ -14,35 +14,53 @@ export default {
 
 <style lang="scss">
 @import "@/assets/styles/scss/eden-whitepaper.scss";
-.font {
-  font-family: $font-family;
+.w-font {
+  font-family: $w-font-family;
 }
-.font-thai {
-  font-family: $font-family-thai;
+.w-font-thai {
+  font-family: $w-font-family-thai;
 }
 
-.font-head {
+.w-font-head {
   font-size: 20px;
-  font-weight: $font-semi-bold;
+  font-weight: $w-font-semi-bold;
 }
-.font-body {
+.w-font-body {
   font-size: 12px;
-  font-weight: $font-regular;
+  font-weight: $w-font-regular;
 }
-.font-small {
+.w-font-small {
   font-size: 8px;
-  font-weight: $font-light;
+  font-weight: $w-font-light;
+}
+
+// main website css
+@import "@/assets/styles/scss/eden-homepage.scss";
+.m-font-family-passero-one {
+  font-family: $m-font-family-passero-one;
+}
+
+.m-font-family-overlock {
+  font-family: $m-font-family-overlock;
+}
+
+.m-font-family-overlock-sc {
+  font-family: $m-font-family-overlock-sc;
+}
+
+.m-font-thai {
+  font-family: $m-font-family-thai;
 }
 
 // Small devices (landscape phones, 576px and up)
 @media screen and (min-width: 576px) {
-  .font-head {
+  .w-font-head {
     font-size: 24px;
   }
-  .font-body {
+  .w-font-body {
     font-size: 16px;
   }
-  .font-small {
+  .w-font-small {
     font-size: 12px;
   }
 }
