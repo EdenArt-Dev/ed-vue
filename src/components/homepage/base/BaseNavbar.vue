@@ -80,7 +80,6 @@ export default {
     display: grid;
     position: fixed;
     width: 100%;
-    background: whitesmoke;
   }
 
 }
