@@ -15,23 +15,23 @@
     </div>
 
     <div v-for="(menu, indexOfMenu) in menus" :key="indexOfMenu">
-      <div class="tw-text-12px sm:tw-text-16px tw-pb-12px">
+      <div class="tw-text-12px sm:tw-text-16px">
         <div
           :class="[
-            ' tw-flex tw-items-center tw-justify-between tw-w-full tw-h-46px',
+            ' tw-flex tw-items-center tw-justify-between tw-w-full tw-h-40px sm:tw-h-46px tw-cursor-pointer',
             {
               'tw-bg-fff-white tw-border': currentMenu.includes(menu.path),
             },
           ]"
         >
-          <div class="tw-flex tw-items-center">
+          <div class="tw-flex tw-items-center tw-cursor-pointer" @click="currentMenu = menu.path">
             <div
               v-if="currentMenu.includes(menu.path)"
-              class="tw-w-6px tw-h-46px tw-bg-primary-brown"
+              class="tw-w-6px tw-h-40px sm:tw-h-46px tw-bg-primary-brown"
             ></div>
 
             <label
-              :class="[
+              :class="[ 'tw-cursor-pointer',
                 {
                   'tw-ml-18px tw-text-primary-brown tw-font-semibold':
                     currentMenu.includes(menu.path),
@@ -47,10 +47,10 @@
           <div
             v-if="menu.subMenu.length"
             :class="[
-              'tw-mr-24px bi ',
+              'tw-mr-24px bi tw-cursor-pointer',
               {
                 'bi-chevron-down': currentMenu.includes(menu.path),
-                'bi-chevron-up': !currentMenu.includes(menu.path),
+                'bi-chevron-right': !currentMenu.includes(menu.path),
               },
               {
                 'tw-text-primary-brown': currentMenu === menu.path,
@@ -61,21 +61,33 @@
         </div>
 
         <div
-          :class="{ 'tw-bg-fff-white shadow-top': currentMenu === menu.path }"
+          v-if="currentMenu.includes(menu.path)"
+          :class="{
+            'tw-bg-fff-white shadow-top': currentMenu.includes(menu.path),
+            'tw-pb-12px': menu.subMenu.length,
+          }"
         >
           <div
             v-for="(subMenu, indexOfSubMenu) in menu.subMenu"
             :key="indexOfSubMenu"
           >
-            <div class="tw-pt-12px tw-flex tw-justify-between">
+            <div
+              class="tw-pt-12px tw-flex tw-justify-between"
+              @click="currentMenu = subMenu.path"
+            >
               <label
                 :class="[
-                  'tw-ml-36px',
+                  'tw-ml-36px tw-cursor-pointer',
                   {
                     'tw-text-secondary-brown': currentMenu === subMenu.path,
-                    'tw-text-secondary-black': currentMenu !== subMenu.path,
                   },
-                  { 'tw-font-semibold': currentMenu.includes(subMenu.path) },
+                  {
+                    'tw-text-primaly-black tw-font-semibold':
+                      currentMenu.includes(subMenu.path),
+                    'tw-text-primaly-black': !currentMenu.includes(
+                      subMenu.path
+                    ),
+                  },
                 ]"
               >
                 {{ subMenu.title }}</label
@@ -87,7 +99,7 @@
                   {
                     'bi-chevron-down tw-text-primary-brown':
                       currentMenu.includes(subMenu.path),
-                    'bi-chevron-up tw-text-primary-black':
+                    'bi-chevron-right tw-text-primary-black':
                       !currentMenu.includes(subMenu.path),
                   },
                 ]"
@@ -95,24 +107,24 @@
               ></div>
             </div>
 
-            <div class="tw-flex">
+            <div v-if="subMenu.childSubMenu.length" class="tw-flex">
               <div
-                v-if="subMenu.childSubMenu.length > 0"
                 class="tw-ml-36px tw-h-auto tw-border tw-bg-secondary-grey"
               ></div>
 
-              <div class="tw-flex-col">
+              <div v-if="currentMenu.includes(subMenu.path)" class="tw-flex-col tw-cursor-pointer">
                 <div
                   v-for="(
                     childSubMenu, indexOfChildSubMenu
                   ) in subMenu.childSubMenu"
                   :key="indexOfChildSubMenu"
+                  @click="currentMenu = childSubMenu.path"
                 >
                   <label
                     :class="[
-                      'tw-ml-16px',
+                      'tw-ml-16px tw-cursor-pointer',
                       {
-                        'tw-text-secondary-brown tw-font-medium':
+                        'tw-text-secondary-brown tw-font-semibold':
                           currentMenu === childSubMenu.path,
                       },
                       {
